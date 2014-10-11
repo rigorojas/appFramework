@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>EasyTabs Demo</title>
+
+<link rel="stylesheet" type="text/css" href="./resource/easytabs/css/style.css" />
+
+</head>
+<body>
+
+<div id="tab-container" class='tab-container'>
+	<ul class='etabs'>
+		<li class='tab'><a href="#tabs1-html">HTML Markup</a></li>
+		<li class='tab'><a href="#tabs1-js">Required JS</a></li>
+		<li class='tab'><a href="#tabs1-css">Example CSS</a></li>
+	 </ul><!--end .etabs-->
+	 <div class='panel-container'>
+		  <div id="tabs1-html">
+		  	Tab html
+		  </div><!--end #tabs1-html-->
+		<div id="tabs1-js">
+			Tab Js
+		</div><!--end #tabs-js-->
+		<div id="tabs1-css">
+			Tab CSS
+		</div><!--end #tabs1-css-->
+	</div><!--end .panel-container-->
+</div><!--end #tab-container-->
+<script src="./resource/jquery/1.11.1.min.js" type="text/javascript"></script> 
+<script src="./resource/jquery/vendor/jquery.hashchange.min.js" type="text/javascript"></script>
+<script src="./resource/easytabs/jquery.easytabs.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready( function() {
+		$('#tab-container').easytabs();
+	});
+</script>
+</body>
+</html>

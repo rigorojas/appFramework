@@ -1,0 +1,5 @@
+.swiper { width: 100%; height: 100%; }
+.swiper .pagination {position: absolute; z-index: 20; left: 10px;}
+.swiper .swiper-pagination-switch { display: inline-block; width: 8px; height: 8px; border-radius: 8px; background: #222; margin-right: 5px; opacity: 0.8; border: 1px solid #fff; cursor: pointer; }
+.swiper .swiper-visible-switch { background: #aaa; }
+.swiper .swiper-active-switch { background: #fff; }

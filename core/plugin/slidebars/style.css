@@ -1,0 +1,14 @@
+#sb-site{ min-height: calc( 100vh - 100px ) !important; height: calc( 100vh - 100px ) !important; max-height: calc( 100vh - 100px ) !important; overflow: hidden !important; overflow-y: scroll; margin-top: 50px; margin-bottom: 50px; }
+#sb-site .contentPanel { min-height: 100%; height: 100%; max-height: 100%; position: absolute; left: 100%; top: 0; display: block; width: 100%; max-width: 100%; min-width: 100%; transform: scale(.6); box-shadow: 0px 0px 65px 20px rgba(0,0,0,0.3); }
+#sb-site .contentPanel.current { top: 0; left: 0; transform: scale(1); }
+#sb-site .contentPanel .max-height{ min-height: 100% !important; height: 100% !important; max-height: 100% !important; overflow-x: hidden; }
+#fixed-top { position: fixed; top: 0; width: 100%; height: 50px; background-color: red; z-index: 4; }
+#fixed-top span.sb-toggle-left { float: left; color: white; padding: 10px; }
+#fixed-top span.sb-toggle-right { float: right; color: white; padding: 10px; }
+#fixed-bottom { position: fixed; bottom: 0; width: 100%; height: 50px; z-index: 4; }
+html.sb-active #sb-site,
+.sb-toggle-left,
+.sb-toggle-right,
+.sb-open-left,
+.sb-open-right,
+.sb-close { cursor: pointer; }

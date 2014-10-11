@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Untitled Document</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="./core/plugin/greensock/TweenMax.min.js"/></script>
+	<script src="./core/plugin/plugins/CSSPlugin.min.js"></script>
+	<!-- script src="./core/plugin/greensock//easing/EasePack.min.js"></script -->
+	<!-- script src="./core/plugin/greensock/TweenLite.min.js"></script -->
+    </head>
+    <body>
+
+    		<img id='photo' src="http://www.4men1lady.com/wp-content/uploads/2013/06/IMG_6067-1024x682.jpg" alt="placeholder+image">
+
+    		<div class="trigger" style"height: 20px; width: 100px;">Animate</div><br /><br />
+    		<div class="reverse" style"height: 20px; width: 100px;">Reverse</div>
+	<style type="text/css">
+		.trigger, .reverse { float: right;}
+		#photo { height: 200px; width: 200px; background: pink; overflow: hidden; position: absolute; bottom: 500px;}
+		#photo.active { height: 400px; width: 400px; }
+		#photo.position { bottom: 0; left: 0; }
+		#photo.border { border: 10px solid orange; }
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.trigger').on('click', function(){ myAnimation.play(); });
+			$('.reverse').on('click', function(){ myAnimation.reverse(); });
+			var myAnimation = new TweenMax.to(
+				'#photo'
+				, .5
+				,{
+					className: "+=active position border"
+					,rotate: 90
+					,'paused': true
+					//,'ease': Elastic.easeOut
+					//,'onComplete': celebrate
+					//,'onCompleteParams':['params work!']
+				}
+			);
+			function celebrate(e){
+				alert(e || 'Lets Celebrate');
+			}
+		});//end doc.ready
+	</script>
+    </body>
+</html>

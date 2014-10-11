@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+	<head>
+		<title>App Framework</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="./custom/plugin/front/css/style.css" />
+		<link rel="stylesheet" href="./core/plugin/slidebars/slidebars.css" />
+		<link rel="stylesheet" href="./core/plugin/slidebars/style.css" />
+		<link rel="stylesheet" href="./core/plugin/swiper/css/idangerous.swiper.css" />
+		<link rel="stylesheet" href="./core/plugin/swiper/css/style.css" />
+	</head>
+	<body>
+		<div id="fixed-top" class="sb-slide">
+			<span class="sb-toggle-left">&laquo;</span>
+			<span class="sb-toggle-right">&raquo;</span>
+		</div><!--end #fixed-top -->
+
+		<div id="sb-site" class="teal">
+
+			<div id="home" class="contentPanel current">
+				<div class="scrollWrapper pink max-height">
+					<div class="title">Slide 1</div>
+				</div><!--end .scrollWrapper-->
+			</div><!--end .contentPanel-->
+
+			<div id="info" class="contentPanel" >
+				<div class="scrollWrapper red max-height">
+					<div class="swiper gray">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide gradient red max-height ">
+								<div class="title">info -> Slide 1</div>
+							</div>
+							<div class="swiper-slide blue gradient">
+								<div class="title">info -> Slide 2</div>
+							</div>
+							<div class="swiper-slide orange gradient">
+								<div class="title">info -> Slide 3</div>
+							</div>
+						</div><!--end .swiper-wrapper-->
+					</div><!--end .swiper-->
+				</div><!--end .scrollWrapper-->
+			</div><!--end .contentPanel-->
+
+		</div><!--end sb-site -->
+
+		<div class="sb-slidebar sb-left">
+			<div>LEFT SLIDEBAR HEADER</div>
+			<div id="leftNavigation" class="swiper gray" style='height: 60%;'>
+				<div class="swiper-wrapper">
+					<div class="swiper-slide red">tab 1</div>
+					<div class="swiper-slide blue">tab 2</div>
+					<div class="swiper-slide pink">tab 3</div>
+					<div class="swiper-slide orange">tab 4</div>
+					<div class="swiper-slide green">tab 5</div>
+				</div><!--end .swiper-wrapper-->
+				<div class="pagination"></div>
+			</div><!--end #leftNavigation -->
+			<div>LEFT SLIDEBAR Footer</div>
+		</div><!--end sb-left-->
+
+		<div class="sb-slidebar sb-right">
+			<div>RIGHT SLIDEBAR HEADER</div>
+			<div id="rightNavigation" class="swiper gray" style='height: 60%;'>
+				<div class="swiper-wrapper">
+					<div class="swiper-slide red">tab 1</div>
+					<div class="swiper-slide blue">tab 2</div>
+					<div class="swiper-slide green">tab 3</div>
+					<div class="swiper-slide pink">tab 4</div>
+					<div class="swiper-slide orange">tab 5</div>
+				</div><!--end .swiper-wrapper-->
+				<div class="pagination"></div>
+			</div><!--end #leftNavigation -->
+			<div>RIGHT SLIDEBAR FOOTER</div>
+		</div><!--end sb-right -->
+
+		<div id="fixed-bottom" class="sb-slide">
+			<div id="globalNavigation" class="swiper gray">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide blue panelTrigger" data-href='#home'> home </div>
+					<div class="swiper-slide red panelTrigger" data-href='#info'> info </div>
+				</div><!--end .swiper-wrapper-->
+				<div class="pagination"></div>
+			</div><!--end #globalNavigation -->
+		</div><!--end #fixed-top -->
+
+		<script src="./core/plugin/jquery/1.11.1.min.js"></script>
+		<script src="./core/plugin/slidebars/slidebars.js"></script>
+		<script src="./core/plugin/swiper/js/idangerous.swiper.min.js"></script>
+		<script src="./core/plugin/greensock/TweenMax.min.js"/></script>
+		<script src="./core/plugin/greensock/plugins/CSSPlugin.min.js"></script>
+		<script>
+			(function($) {
+				$(document).ready(function() {
+					var slidebars = new $.slidebars();
+					var globalContent = new Swiper('#info .swiper');
+					var globalNavigation = new Swiper('#globalNavigation ',{ slidesPerView: 2, slidesPerViewFit: true, loop: true, autoResize: true, centeredSlides: false });//end #globalNavigation
+					var leftNavigation = new Swiper('#leftNavigation ',{ mode:'vertical', slidesPerView: 5 });
+					var rightNavigation = new Swiper('#rightNavigation ',{ mode:'vertical', slidesPerView: 5 });
+
+					$('.sb-toggle-left').click(function(){
+						leftNavigation.reInit() ;
+					});//end .sb-toggle-left.click
+
+					$('.sb-toggle-right').click(function(){
+						rightNavigation.reInit() ;
+					});//end .sb-toggle-right.click
+
+					$('.panelTrigger').on('click',function(){
+						var panelCurrent = '#'+$('.contentPanel.current').attr('id'); console.log(panelCurrent);
+						var panelNext = this.data('href');
+						swapPanels( panelCurrent, panelNext );
+					})//end on.click
+					//$('.swiper').parents('.contentPanel').on('setCurrent', function(){ globalContent.reInit() ; });//end on.setCurrent
+
+					function swapClassCurrent(current, next){
+						$(current).removeClass('current');
+						$(next).addClass('current');
+					}//end removeCurrent
+
+					function addClassCurrent(ele){
+						$(ele).addClass('current');
+					}//end fn.setCurrent
+
+					function removeClassCurrent(ele){
+						$(ele).removeClass('current');
+					}//end fn.setCurrent
+
+					function swapPanels(current, next){
+						var panelExit = new TimelineLite();
+						var panelEnter = new TimelineLite();
+
+						panelExit
+							.fromTo( current, .2, { scale: 1 },{ scale: .6 } )
+							.fromTo( current, .5, { left: 0 },{left: '-101%', onComplete: removeClassCurrent, onCompleteParams: [current] });
+
+						panelEnter
+							.fromTo( next, .5, {left: '100%'},{left:'0', delay: .2})
+							.to( next, .2, { scale: 1, onComplete: addClassCurrent, onCompleteParams: [next] });
+
+						panelExit.timeScale(.8);
+						panelEnter.timeScale(.8);
+					}//end fn.eleExit
+
+
+				});//end doc.ready
+			})(jQuery);
+		</script>
+	</body>
+</html>

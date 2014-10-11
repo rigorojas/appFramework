@@ -1,0 +1,10 @@
+html { font-family: sans-serif; overflow: hidden;}
+body { background-color: #222222; overflow: hidden; }
+.red { background-color: #ca4040 !important; }
+.blue { background-color: #4390ee !important; }
+.orange { background-color: #ff8604 !important; }
+.green { background-color: #49a430 !important; }
+.pink { background-color: #973e76 !important; }
+.teal {  background-color: #33cece !important; }
+.gray { background-color: #cccccc };
+.gradient { background: url('../img/bg_gradientWhite.png') center center no-repeat; background-size: 100% 100%; }
