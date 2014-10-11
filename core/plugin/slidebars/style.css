@@ -5,7 +5,7 @@
 #fixed-top { position: fixed; top: 0; width: 100%; height: 50px; background-color: red; z-index: 4; }
 #fixed-top span.sb-toggle-left { float: left; color: white; padding: 10px; }
 #fixed-top span.sb-toggle-right { float: right; color: white; padding: 10px; }
-#fixed-bottom { position: fixed; bottom: 0; width: 100%; height: 50px; z-index: 4; }
+#fixed-bottom { position: fixed; bottom: 0; width: 100%; height: 50px; z-index: 4; overflow: hidden;}
 html.sb-active #sb-site,
 .sb-toggle-left,
 .sb-toggle-right,
